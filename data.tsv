@@ -1,4 +1,4 @@
-corpus	lang	featspertokens	featsperlength	analysespertypes
+corpus	lang	featspertokens	analysesperlength	analysespertypes
 UD_Afrikaans-AfriBooms/af_afribooms-ud-train.conllu	af	1.6561	0.1181	1.0663
 UD_Ancient_Greek-Perseus/grc_perseus-ud-train.conllu	grc	2.7573	0.1455	1.0931
 UD_Ancient_Greek-PROIEL/grc_proiel-ud-train.conllu	grc	3.5674	0.1313	1.0797
