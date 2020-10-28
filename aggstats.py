@@ -22,6 +22,11 @@ for block in open(sys.argv[1]).read().split('\n'):
 		#4	жылы	жыл	NOUN	n	Case=Nom|Number[psor]=Plur,Sing|Person[psor]=3	24	obl	_	_
 		token = row[1]
 		lem = row[2]
+		tag = row[3]
+
+		if tag not in ['VERB', 'NOUN']:
+			continue
+	
 		feats = row[5].split('|')
 		n_feats += len(feats)
 		n_tokens += 1
