@@ -1,4 +1,4 @@
-corpus	lang	featspertokens	analysesperlength	analysespertypes
+corpus	lang	featspertokens	featsperlength	analysespertypes
 UD_Basque-BDT/eu_bdt-ud-test.conllu	eu	2.5367	0.1267	1.0832
 UD_English-PUD/en_pud-ud-test.conllu	en	1.4440	0.1521	1.0779
 UD_Finnish-PUD/fi_pud-ud-test.conllu	fi	3.2612	0.1022	1.0097

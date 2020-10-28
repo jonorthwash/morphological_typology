@@ -1,5 +1,6 @@
 import sys
 import plotly.express as px
+import plotly.offline as po
 import pandas as pd
 
 df = pd.read_csv(sys.argv[1], sep='\t') 
@@ -9,13 +10,13 @@ df = pd.read_csv(sys.argv[1], sep='\t')
 #analysespertypes = ambiguity
 # forms per lemma?
 
-#fig = px.scatter_3d(df, y='featspertokens', z='featsperlength', x='analysespertypes', text='lang', opacity=0.7, labels={
-#    "featspertokens": "analytic / synthetic (feat/tok)",
-#    "featsperlength": "fusional / agglutinating (feat/char≈feat/morph)",
-#    "analysespertypes": "ambiguity (feat/type)"
-#})
+fig3d = px.scatter_3d(df, z='featspertokens', y='featsperlength', x='analysespertypes', text='lang', opacity=0.7, labels={
+    "featspertokens": "analytic / synthetic (feat/tok)",
+    "featsperlength": "agglutinating / fusional (feat/char≈feat/morph)",
+    "analysespertypes": "ambiguity (feat/type)"
+})
 
-fig = px.scatter(df, y='featspertokens', x='featsperlength', text='lang', opacity=0.7, labels={
+fig2d = px.scatter(df, y='featspertokens', x='featsperlength', text='lang', opacity=0.7, labels={
     "featspertokens": "analytic / synthetic (feat/tok)",
     "featsperlength": "agglutinating / fusional (feat/char≈feat/morph)",
 })
@@ -24,4 +25,19 @@ fig = px.scatter(df, y='featspertokens', x='featsperlength', text='lang', opacit
 # tight layout
 #fig.update_layout(margin=dict(l=0, r=0, b=0, t=0))
 
-fig.show()
+fig2d.update_layout(
+    font=dict(
+        size=18,
+    )
+)
+
+fig3d.update_layout(
+    font=dict(
+        size=18,
+    )
+)
+
+#fig.show()
+po.plot(fig2d, filename = '2d.html', auto_open=False)
+po.plot(fig3d, filename = '3d.html', auto_open=False)
+
