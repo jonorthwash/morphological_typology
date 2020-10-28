@@ -6,6 +6,7 @@ n_tokens = 0
 n_types = 0
 dico = {}
 n_analyses = 0
+token_length = 0
 
 for block in open(sys.argv[1]).read().split('\n'):
 	for line in block.split('\n'):
@@ -23,6 +24,7 @@ for block in open(sys.argv[1]).read().split('\n'):
 		token = row[1]
 		lem = row[2]
 		tag = row[3]
+      token_length += len(row[1])
 
 		if tag not in ['VERB', 'NOUN']:
 			continue
@@ -49,4 +51,5 @@ print(t_length, file=sys.stderr)
 
 code = sys.argv[1].split('/')[1].split('_')[0]
 
-print('%s\t%s\t%.4f\t%.4f\t%.4f' % (sys.argv[1], code, n_feats/n_tokens, n_analyses/t_length, n_analyses/n_types))
+#print('%s\t%s\t%.4f\t%.4f\t%.4f' % (sys.argv[1], code, n_feats/n_tokens, n_analyses/t_length, n_analyses/n_types))
+print('%s\t%s\t%.4f\t%.4f\t%.4f' % (sys.argv[1], code, n_feats/n_tokens, n_feats/token_length, n_analyses/n_types))

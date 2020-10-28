@@ -4,6 +4,11 @@ import pandas as pd
 
 df = pd.read_csv(sys.argv[1], sep='\t') 
 
+#featspertoken = analytic/synthetic = more features per token is more synthetic
+#analysesperlength = fusional/agglutinating = features/character ≈ features/morpheme — fewer features per morpheme = more agglutinating
+#analysespertypes = ambiguity
+# forms per lemma?
+
 fig = px.scatter_3d(df, y='featspertokens', z='analysesperlength', x='analysespertypes', text='lang', opacity=0.7)
 
 # tight layout
