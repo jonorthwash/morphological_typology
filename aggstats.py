@@ -24,7 +24,7 @@ for block in open(sys.argv[1]).read().split('\n'):
 		token = row[1]
 		lem = row[2]
 		tag = row[3]
-      token_length += len(row[1])
+		token_length += len(row[1])
 
 		if tag not in ['VERB', 'NOUN']:
 			continue
