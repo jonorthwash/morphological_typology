@@ -26,7 +26,7 @@ for block in open(sys.argv[1]).read().split('\n'):
 		tag = row[3]
 		token_length += len(row[1])
 
-		if tag not in ['VERB', 'NOUN']:
+		if tag not in ['VERB', 'NOUN', 'AUX']:
 			continue
 	
 		feats = row[5].split('|')
