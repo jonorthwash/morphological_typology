@@ -48,8 +48,10 @@ $(document).ready(function() {
 	console.log(y);
 	document.getElementById("graph").appendChild(newText);
 
-	var textNode2 = document.createTextNode(langname);
+	var textNode2 = document.createTextNode('[x] ' + langname);
+	var br = document.createElement('br');
 	document.getElementById("list").appendChild(textNode2);
+	document.getElementById("list").appendChild(br);
 
 //        alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
     });
