@@ -1,5 +1,6 @@
  <html>
 <head>
+<title>Survey on morphological typology</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
@@ -35,6 +36,12 @@ $(document).ready(function() {
         var px=x/cw*iw
         var py=y/ch*ih
 
+        if(responses[langname]) {
+		return;
+	}
+
+        responses[langname] = [bounds, event.pageX, event.pageY];
+
 	var svgNS = "http://www.w3.org/2000/svg";
 	var newText = document.createElementNS(svgNS,"text");
 	newText.setAttributeNS(null,"x",x/5);     
@@ -54,6 +61,8 @@ $(document).ready(function() {
 	document.getElementById("list").appendChild(br);
 
 //        alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
+
+	console.log(responses);
     });
 });
 </script>
