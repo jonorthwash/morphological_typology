@@ -9,11 +9,21 @@
 
 var responses = {};
 
+    function remove(event) {
+
+         console.log('remove');
+         var lang = event.id;
+         console.log(lang);
+         event.remove();
+
+         var langItem = document.getElementById("list-" + lang);
+         langItem.remove();
+    };
+
+
 $(document).ready(function() {
 
     console.log("ready");
-
-
     $("#graph").on("click", function(event) {
 
     //var svgObject = document.getElementById('graph').contentDocument;
@@ -47,6 +57,7 @@ $(document).ready(function() {
 	newText.setAttributeNS(null,"x",x/5);     
 	newText.setAttributeNS(null,"y",y/5); 
 	newText.setAttributeNS(null,"font-size","6");
+	newText.setAttributeNS(null,"id",langname); 
 
 	var textNode = document.createTextNode(langname);
 	newText.appendChild(textNode);
@@ -55,9 +66,13 @@ $(document).ready(function() {
 	console.log(y);
 	document.getElementById("graph").appendChild(newText);
 
+	var langListItem = document.createElement("span");
+	langListItem.setAttributeNS(null, "id", "list-" + langname);
+	langListItem.setAttributeNS(null, "onclick", "remove(" + langname +")");
 	var textNode2 = document.createTextNode('[x] ' + langname);
+	langListItem.appendChild(textNode2);
 	var br = document.createElement('br');
-	document.getElementById("list").appendChild(textNode2);
+	document.getElementById("list").appendChild(langListItem);
 	document.getElementById("list").appendChild(br);
 
 //        alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
