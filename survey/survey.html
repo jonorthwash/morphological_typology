@@ -1,12 +1,20 @@
  <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="jquery.textover.min.js"></script>
 </head>
 <body>
 
 <script>
+
+var responses = {};
+
+
 $(document).ready(function() {
+
     $("img").on("click", function(event) {
+        console.log('click');
+        console.log($("#lang").val());
         bounds=this.getBoundingClientRect();
         var left=bounds.left;
         var top=bounds.top;
@@ -18,13 +26,33 @@ $(document).ready(function() {
         var ih=this.naturalHeight
         var px=x/cw*iw
         var py=y/ch*ih
-        alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
+
+	var svgNS = "http://www.w3.org/2000/svg";
+	var newText = document.createElementNS(svgNS,"text");
+	newText.setAttributeNS(null,"x",left);     
+	newText.setAttributeNS(null,"y",top); 
+	newText.setAttributeNS(null,"font-size","50");
+
+	var textNode = document.createTextNode("derp");
+	newText.appendChild(textNode);
+	console.log(textNode);
+	console.log(x);
+	console.log(y);
+	//$("#graph").appendChild(newText);
+
+//        alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
     });
 });
 </script>
 
 
 <center>
-<img src="graph-blank.svg" height="500" width="500" alt="">
+<form id="survey">
+Language: <input id="lang" name="lang"/><br/>
+<img id="graph" src="graph-blank.svg" height="500" width="500" alt="">
+</form>
 </center>
+
+Write a language name and click on the graph.
+
 </html>
