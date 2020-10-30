@@ -1,7 +1,6 @@
  <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="jquery.textover.min.js"></script>
 </head>
 <body>
 
@@ -9,17 +8,26 @@
 
 var responses = {};
 
-
 $(document).ready(function() {
 
-    $("img").on("click", function(event) {
-        console.log('click');
-        console.log($("#lang").val());
+    console.log("ready");
+
+
+    $("#graph").on("click", function(event) {
+
+    //var svgObject = document.getElementById('graph').contentDocument;
+    //var svg = svgObject.getElementById('external-1');
+    //console.log(svg);
+        var langname = $("#lang").val()
+        console.log('click: ' + langname);
         bounds=this.getBoundingClientRect();
+	console.log(bounds)
         var left=bounds.left;
         var top=bounds.top;
         var x = event.pageX - left;
         var y = event.pageY - top;
+        console.log(event.pageX);
+        console.log(event.pageY);
         var cw=this.clientWidth
         var ch=this.clientHeight
         var iw=this.naturalWidth
@@ -29,16 +37,19 @@ $(document).ready(function() {
 
 	var svgNS = "http://www.w3.org/2000/svg";
 	var newText = document.createElementNS(svgNS,"text");
-	newText.setAttributeNS(null,"x",left);     
-	newText.setAttributeNS(null,"y",top); 
-	newText.setAttributeNS(null,"font-size","50");
+	newText.setAttributeNS(null,"x",150);     
+	newText.setAttributeNS(null,"y",100); 
+	newText.setAttributeNS(null,"font-size","6");
 
-	var textNode = document.createTextNode("derp");
+	var textNode = document.createTextNode(langname);
 	newText.appendChild(textNode);
 	console.log(textNode);
 	console.log(x);
 	console.log(y);
-	//$("#graph").appendChild(newText);
+	document.getElementById("graph").appendChild(newText);
+
+	var textNode2 = document.createTextNode(langname);
+	document.getElementById("list").appendChild(textNode2);
 
 //        alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
     });
@@ -46,13 +57,184 @@ $(document).ready(function() {
 </script>
 
 
+<div style="float: left">
 <center>
 <form id="survey">
 Language: <input id="lang" name="lang"/><br/>
-<img id="graph" src="graph-blank.svg" height="500" width="500" alt="">
+<!--<img id="graph" src="graph-blank.svg" height="500" width="500" alt="">-->
+<!--<object id="graph" data="graph-blank.svg" type="image/svg+xml"></object>-->
+
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="190.86404mm"
+   height="169.24133mm"
+   viewBox="0 0 190.86404 169.24133"
+   id="graph">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="SquareM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1297"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1295"
+         d="M -5,-5 V 5 H 5 V -5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="SquareM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="SquareM"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path924"
+         d="M -5,-5 V 5 H 5 V -5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1193"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1191"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path872"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5"
+     fit-margin-top="5"/>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.48506831,-9.3875883)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#SquareM)"
+       d="M 34.058068,160.76773 H 184.08245 v 0"
+       id="path29"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1297)"
+       d="M 42.220744,166.67863 V 16.654255"
+       id="path1293"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="47.850185"
+       y="172.58954"
+       id="text1349"><tspan
+         sodipodi:role="line"
+         id="tspan1347"
+         x="47.850185"
+         y="172.58954"
+         style="stroke-width:0.26458332">Fusional</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="138.76552"
+       y="172.30807"
+       id="text1353"><tspan
+         sodipodi:role="line"
+         id="tspan1351"
+         x="138.76552"
+         y="172.30807"
+         style="stroke-width:0.26458332">Agglutinative</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="7.0367908"
+       y="155.98271"
+       id="text1357"><tspan
+         sodipodi:role="line"
+         id="tspan1355"
+         x="7.0367908"
+         y="155.98271"
+         style="stroke-width:0.26458332">Analytic</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="5.0664892"
+       y="24.253988"
+       id="text1361"><tspan
+         sodipodi:role="line"
+         id="tspan1359"
+         x="5.0664892"
+         y="24.253988"
+         style="stroke-width:0.26458332">Synthetic</tspan></text>
+  </g>
+</svg>
+
+
 </form>
 </center>
-
+</div>
+<div style="float: right">
+ <div id="list"></div>
+</div>
+<div style="float:left">
 Write a language name and click on the graph.
+</div>
 
 </html>
