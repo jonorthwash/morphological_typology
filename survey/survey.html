@@ -30,6 +30,10 @@ $(document).ready(function() {
     //var svg = svgObject.getElementById('external-1');
     //console.log(svg);
         var langname = $("#lang").val()
+
+        if(!(langname)) {
+            return;
+        }
         console.log('click: ' + langname);
         bounds=this.getBoundingClientRect();
 	console.log(bounds)
@@ -91,11 +95,14 @@ Write a language name and click on the graph.
 </div>
 
 
-<div style="float: left">
-<center>
+<div style="float: left; width:70%">
 <!--<img id="graph" src="graph-blank.svg" height="500" width="500" alt="">-->
 <!--<object id="graph" data="graph-blank.svg" type="image/svg+xml"></object>-->
 
+<!--
+   width="190.86404mm"
+   height="169.24133mm"
+-->
 
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -105,8 +112,8 @@ Write a language name and click on the graph.
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="190.86404mm"
-   height="169.24133mm"
+   width="600px"
+   height="600px"
    viewBox="0 0 190.86404 169.24133"
    id="graph">
   <defs
@@ -259,10 +266,8 @@ Write a language name and click on the graph.
 </svg>
 
 
-</form>
-</center>
 </div>
-<div style="float: right">
+<div style="float: right; width:30%">
 <form id="survey">
 Language: <input id="lang" name="lang" value=""/><br/>
 </form>
