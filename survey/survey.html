@@ -67,6 +67,13 @@ function makeDraggable(evt) {
       selectedElement.setAttributeNS(null, "x", coord.x);
       selectedElement.setAttributeNS(null, "y", coord.y);
     }
+    console.log('UPDATE!')
+    var langname =   selectedElement.getAttributeNS(null, "id");
+    // make sure to get langname
+    console.log(langname + ':');
+    console.log(coord.x);
+    console.log(coord.y);
+    responses[langname] = [bounds, coord.x, coord.y];
 }
   function endDrag(evt) {
   selectedElement = null;
