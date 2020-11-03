@@ -123,7 +123,7 @@ $(document).ready(function() {
 	newText.setAttributeNS(null,"id",langname); 
 	newText.setAttributeNS(null,"class","draggable"); 
 
-	var textNode = document.createTextNode(langname);
+	var textNode = document.createTextNode("•" + langname);
 	newText.appendChild(textNode);
 	console.log(textNode);
 	console.log(x);
