@@ -2,12 +2,27 @@
 <head>
 <title>Survey on morphological typology</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<style>
+
+    .static {
+      cursor: not-allowed;
+    }
+    .draggable {
+      cursor: move;
+    }
+
+</style>
 </head>
 <body>
 
 <script>
 
 var responses = {};
+
+
+    var selectedElement = false;
+
 
     function remove(event) {
 
@@ -20,6 +35,43 @@ var responses = {};
          langItem.remove();
     };
 
+
+
+
+
+function makeDraggable(evt) {
+  var svg = evt.target;
+  svg.addEventListener('mousedown', startDrag);
+  svg.addEventListener('mousemove', drag);
+  svg.addEventListener('mouseup', endDrag);
+  svg.addEventListener('mouseleave', endDrag);
+
+    function getMousePosition(evt) {
+      var CTM = svg.getScreenCTM();
+      return {
+        x: (evt.clientX - CTM.e) / CTM.a,
+        y: (evt.clientY - CTM.f) / CTM.d
+      };
+    }
+
+
+    function startDrag(evt) {
+      if (evt.target.classList.contains('draggable')) {
+        selectedElement = evt.target;
+      }
+    }
+  function drag(evt) {
+    if (selectedElement) {
+      evt.preventDefault();
+      var coord = getMousePosition(evt);
+      selectedElement.setAttributeNS(null, "x", coord.x);
+      selectedElement.setAttributeNS(null, "y", coord.y);
+    }
+}
+  function endDrag(evt) {
+  selectedElement = null;
+  }
+}
 
 $(document).ready(function() {
 
@@ -62,6 +114,7 @@ $(document).ready(function() {
 	newText.setAttributeNS(null,"y",y/5); 
 	newText.setAttributeNS(null,"font-size","6");
 	newText.setAttributeNS(null,"id",langname); 
+	newText.setAttributeNS(null,"class","draggable"); 
 
 	var textNode = document.createTextNode(langname);
 	newText.appendChild(textNode);
@@ -112,6 +165,7 @@ Write a language name and click on the graph.
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   onload="makeDraggable(evt)"
    width="600px"
    height="600px"
    viewBox="0 0 190.86404 169.24133"
